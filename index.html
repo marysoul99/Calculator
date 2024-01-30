@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <title>Web Technology - Lab 1</title>
-    <link href="inc/Stylesheet.css" rel="stylesheet" />
-    <style>
+
+ <!DOCTYPE html>
+ <html lang="he" dir="rtl">
+ <head>
+     <title>Web Technology - Lab 2</title>
+     <link href="inc/Stylesheet.css" rel="stylesheet" />
+     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -27,69 +28,163 @@
             margin: 10px;
         }
     </style>
-</head>
-<body>
-    <div id="myDiv">
-        <input type="text" id="display" readonly style="width: 150px; padding: 8px; margin-top: 5px;">
-        <div style="clear:both"></div>
-        <div style="float: left"><button onclick="appendToDisplay('7')">7</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('8')">8</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('9')">9</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('/')">/</button></div>
-        <div style="clear:both"></div>
-        <div style="float: left"><button onclick="appendToDisplay('4')">4</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('5')">5</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('6')">6</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('x')">x</button></div>
-        <div style="clear:both"></div>
-        <div style="float: left"><button onclick="appendToDisplay('1')">1</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('2')">2</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('3')">3</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('-')">-</button></div>
-        <div style="clear:both"></div>
-        <div style="float: left"><button onclick="appendToDisplay('0')">0</button></div> 
-        <div style="float: left"><button onclick="appendToDisplay('.')">.</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('=')">=</button></div>
-        <div style="float: left"><button onclick="appendToDisplay('+')">+</button></div>
-        <div style="clear:both"></div>
-        <div style="float: left"><button onclick="clearDisplay()">C</button></div>
-        <div style="clear:both"></div>
-    </div>
+ </head>
+ <body>
+     <div id="myDiv">
+         <input type="text" id="display" readonly style="width: 150px; padding: 8px; margin-top: 5px;">
+         <div style="clear:both"></div>
+ 
+         <!-- Numeric buttons -->
 
-    <script>
-        function appendToDisplay(value) {
-            document.getElementById('display').value += value;
-        }
+         
+         <div style="float: left"><button onclick="calculateSquare()">x^2</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('Math.abs(')">|x|</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('Math.exp(')">exp</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('%')">%</button></div>
+         <div style="float: left"><button onclick="clearDisplay()">C</button></div>
+         <div style="clear:both"></div>
 
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-        }
-    </script>
-    <script>
-        // custom config for the MTW app 
-        const mtwAppConfig = {
-            border: true // app border in the MTW page                    
-        }
-    
-        ///////////////////////////////////////////////////////
-        // implement this functions in order to use private API        
-        const sendPrivateApiRequest = async () => {
-            // your code here:
-            // sendRequestToParent({ cat: 'getAssets' })
-        }        
-    
-        const acceptPrivateApiResponse = async (data) => {
-            // process received data here:
-            // console.log(data)
-        }
-    
-        // use this in order to send on document load
-        document.addEventListener('DOMContentLoaded', () => {
-            // your code here:
-            //sendRequestToParent({ method: 'getAssets' })
-        })
-    
-    </script>
-    <script src="https://morethanwallet.com/appstore/index.js"></script>
-</body>
-</html>
+         <div style="float: left"><button onclick="calculateSquareRoot()">√</button></div>
+      
+         
+         <div style="float: left"><button onclick="calculateFactorial()">!</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('/')">/</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('Math.PI')">π</button></div>
+         <div style="float: left"><button onclick="calculateExponential()">e</button></div>
+         <div style="clear:both"></div>
+
+         <div style="float: left"><button onclick="calculatePower()">x^y</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('7')">7</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('8')">8</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('9')">9</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('*')">*</button></div>
+         <div style="clear:both"></div>
+ 
+         <div style="float: left"><button onclick="calculateTenToThePower()">10^x</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('4')">4</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('5')">5</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('6')">6</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('-')">-</button></div>
+         <div style="clear:both"></div>
+ 
+         <div style="float: left"><button onclick="calculateLogarithm()">log</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('1')">1</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('2')">2</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('3')">3</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('+')">+</button></div>
+         <div style="clear:both"></div>
+ 
+         <div style="float: left"><button onclick="calculateNaturalLogarithm()">ln</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('0')">0</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('.')">.</button></div>
+         <div style="float: left"><button onclick="calculateResult()">=</button></div>
+         <div style="clear:both"></div>
+ 
+         <!-- Scientific operations -->
+       
+
+  
+         
+         <div style="clear:both"></div>
+ 
+
+       
+
+
+         <div style="clear:both"></div>
+ 
+         <!-- Clear and equals buttons -->
+
+         <div style="clear:both"></div>
+     </div>
+ 
+     <script>
+         function appendToDisplay(value) {
+             document.getElementById('display').value += value;
+         }
+ 
+         function clearDisplay() {
+             document.getElementById('display').value = '';
+         }
+ 
+         function calculateResult() {
+             const expression = document.getElementById('display').value;
+             try {
+                 const result = evaluateExpression(expression);
+                 document.getElementById('display').value = result;
+             } catch (error) {
+                 document.getElementById('display').value = 'Error';
+             }
+         }
+ 
+         function evaluateExpression(expression) {
+             // Replace special functions with their JavaScript equivalents
+             expression = expression.replace(/sqrt\(/g, 'Math.sqrt(');
+             expression = expression.replace(/log\(/g, 'Math.log10(');
+             expression = expression.replace(/ln\(/g, 'Math.log(');
+             expression = expression.replace(/10\*\*/g, 'Math.pow(10,');
+             expression = expression.replace(/\*\*/g, '**');
+             expression = expression.replace(/\^/g, '**');
+             expression = expression.replace(/!/g, 'factorial(');
+             expression = expression.replace(/exp\(/g, 'Math.exp(');
+             expression = expression.replace(/\|x\|/g, 'Math.abs(');
+
+           
+
+             
+             // Evaluate the expression using eval
+             return eval(expression);
+         }
+ 
+         // Additional functions for scientific operations
+         function calculateSquareRoot() {
+             const value = document.getElementById('display').value;
+             document.getElementById('display').value = Math.sqrt(parseFloat(value));
+         }
+ 
+         function calculateExponential() {
+             document.getElementById('display').value = Math.exp(parseFloat(document.getElementById('display').value));
+         }
+ 
+         function calculateNaturalLogarithm() {
+             document.getElementById('display').value = Math.log(parseFloat(document.getElementById('display').value));
+         }
+ 
+         function calculateLogarithm() {
+             document.getElementById('display').value = Math.log10(parseFloat(document.getElementById('display').value));
+         }
+ 
+         function calculateTenToThePower() {
+             document.getElementById('display').value = Math.pow(10, parseFloat(document.getElementById('display').value));
+         }
+ 
+         function calculatePower() {
+             const value = document.getElementById('display').value;
+             document.getElementById('display').value = eval(value);
+         }
+ 
+         function calculateSquare() {
+             const value = document.getElementById('display').value;
+             document.getElementById('display').value = eval(`${value} ** 2`);
+         }
+ 
+         function factorial(num) {
+             if (num < 0) return 'Error';
+             if (num === 0 || num === 1) return 1;
+             for (let i = num - 1; i >= 1; i--) {
+                 num *= i;
+             }
+             return num;
+         }
+ 
+         function calculateFactorial() {
+             const value = document.getElementById('display').value;
+             document.getElementById('display').value = factorial(parseFloat(value));
+         }
+     </script>
+ 
+     <!-- ... (remaining script code) ... -->
+ 
+ </body>
+ </html>
+ 
