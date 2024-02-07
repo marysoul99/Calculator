@@ -1,73 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BTC/USD Prices</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div id="app" class="max-w-[1000px] mx-auto">
-      <h1 class="font-bold text-3xl text-center text-blue-600 my-4">
-        Cryptocurrency Data
-      </h1>
-    </div>
-    <script>
-      const fields = ["image", "symbol", "name", "summary"]
-      const row = (k, v, i) => {
-        // complete tr string
-        //return `<tr>${Object.entries(v).filter(([k,v])=>fields.includes(k)).map(([k, v], i) => cell(k,v)).join('')}</tr>`
-        return `<tr>${fields.map((f) => cell(k, f, v)).join("")}</tr>`
-      }
-
-      const cell = (sym, prop, v) => {
-        switch (prop) {
-          case "image":
-            return `<td class="w-16 p-2 align-top border-b border-gray-200"><img class="h-full w-auto" src="${v[prop]}" /></td>`
-          case "symbol":
-            return `<td class="p-2 align-top border-b border-gray-200">${sym}</td>`
-          case "name":
-            return `<td class="p-2 align-top border-b border-gray-200"><a class="text-blue-400 font-bold hover:underline" href="${v["website"]}" target="_blank">${v[prop]}</a></td>`
-          default:
-            return `<td class="p-2 align-top border-b border-gray-200">${v[prop]}</td>`
+ <html lang="he" dir="rtl">
+ <head>
+     <title>Web Technology - Lab 2</title>
+     <link href="inc/Stylesheet.css" rel="stylesheet" />
+     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-      }
 
-      const createTable = (data) => {
-        // create table string and insert it into "app" div before end
-        console.log(data)
-        const rows = Object.entries(data)
-          .map(([k, v], i) => row(k, v, i))
-          .join("")
+        #myDiv {
+            border: 5px solid silver;
+            background-color: blanchedalmond;
+            text-align: center;
+            padding: 10px;
+        }
 
-        const rowHead = `<tr>${fields
-          .map(
-            (f) =>
-              `<th class="font-bold bg-gray-200">${f === "image" ? "" : f}</th>`
-          )
-          .join("")}</tr>`
+        button {
+            width: 40px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+ </head>
+ <body>
+     <div id="myDiv">
+         <input type="text" id="display" readonly style="width: 150px; padding: 8px; margin-top: 5px;">
+         <div style="clear:both"></div>
+ 
+         <div style="float: left"><button onclick="calculateSquare()">x^2</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('Math.abs(')">|x|</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('Math.exp(')">exp</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('%')">%</button></div>
+         <div style="float: left"><button onclick="clearDisplay()">C</button></div>
+         <div style="clear:both"></div>
 
-        const table = `<table class="w-full">${rowHead}${rows}</table>`
-        document.getElementById("app").insertAdjacentHTML("beforeend", table)
-      }
+         <div style="float: left"><button onclick="calculateSquareRoot()">√</button></div>
+         <div style="float: left"><button onclick="calculateFactorial()">!</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('/')">/</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('Math.PI')">π</button></div>
+         <div style="float: left"><button onclick="calculateExponential()">e</button></div>
+         <div style="clear:both"></div>
 
-<<<<<<< HEAD
-      const url = "https://api.mtw-testnet.com/assets/all"
-      fetch(url)
-        .then((response) => {
-          return response.json()
-        })
-        .then((v) => createTable(v))
-        .catch((err) => console.log(err))
-    </script>
-  </body>
-</html>
-=======
          <div style="float: left"><button onclick="calculatePower()">x^y</button></div>
          <div style="float: left"><button onclick="appendToDisplay('7')">7</button></div>
          <div style="float: left"><button onclick="appendToDisplay('8')">8</button></div>
          <div style="float: left"><button onclick="appendToDisplay('9')">9</button></div>
-         <div style="float: left"><button onclick="appendToDisplay('*')">*</button></div>
+         <div style="float: left"><button onclick="appendToDisplay('')"></button></div>
          <div style="clear:both"></div>
  
          <div style="float: left"><button onclick="calculateTenToThePower()">10^x</button></div>
@@ -117,9 +101,9 @@
              expression = expression.replace(/sqrt\(/g, 'Math.sqrt(');
              expression = expression.replace(/log\(/g, 'Math.log10(');
              expression = expression.replace(/ln\(/g, 'Math.log(');
-             expression = expression.replace(/10\*\*/g, 'Math.pow(10,');
-             expression = expression.replace(/\*\*/g, '**');
-             expression = expression.replace(/\^/g, '**');
+             expression = expression.replace(/10\\/g, 'Math.pow(10,');
+             expression = expression.replace(/\\/g, '');
+             expression = expression.replace(/\^/g, '');
              expression = expression.replace(/!/g, 'factorial(');
              expression = expression.replace(/exp\(/g, 'Math.exp(');
              expression = expression.replace(/\|x\|/g, 'Math.abs(');
@@ -160,7 +144,7 @@
  
          function calculateSquare() {
              const value = document.getElementById('display').value;
-             document.getElementById('display').value = eval(`${value} ** 2`); 
+             document.getElementById('display').value = eval(${value} ** 2); 
          }
  
          function factorial(num) {
@@ -182,5 +166,3 @@
  
  </body>
  </html>
- 
->>>>>>> 801b230 (Wed 02-07-24)
